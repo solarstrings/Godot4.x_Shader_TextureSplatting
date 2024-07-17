@@ -1,0 +1,24 @@
+[gd_scene load_steps=7 format=3 uid="uid://uc2o0n7r7mf8"]
+
+[ext_resource type="Shader" path="res://Scenes/TextureSplatting/texture_splatting.gdshader" id="1_wryeh"]
+[ext_resource type="Texture2D" uid="uid://c7ynhflvno7id" path="res://Assets/Textures/BeachPebbels_Depth.png" id="2_4xkkp"]
+[ext_resource type="Texture2D" uid="uid://djkhgkier8mnn" path="res://Assets/Textures/BeachPebbels.png" id="3_pina5"]
+[ext_resource type="Texture2D" uid="uid://dt62ix700kn" path="res://Assets/Textures/Beach.png" id="4_a427r"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uq8rv"]
+render_priority = 0
+shader = ExtResource("1_wryeh")
+shader_parameter/blend_amount = 0.4
+shader_parameter/tex1_resolution = 1.01
+shader_parameter/tex2_resolution = 1.01
+shader_parameter/texture1 = ExtResource("3_pina5")
+shader_parameter/texture2 = ExtResource("4_a427r")
+shader_parameter/depth_map = ExtResource("2_4xkkp")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_12j41"]
+material = SubResource("ShaderMaterial_uq8rv")
+
+[node name="TextureSplatting" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_12j41")
